@@ -1,0 +1,13 @@
+services:
+  api:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      ADMIN_API_KEY: ${ADMIN_API_KEY:-change-this-before-deploying}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:5500,http://127.0.0.1:5500}
+      DATABASE_PATH: /data/karka_leads.db
+    volumes:
+      - karka_data:/data
+volumes:
+  karka_data:
